@@ -67,9 +67,37 @@ const createBooking = async (req, res, next) => {
       });
     }
 
+    // This atomic update locks the slot first. If two users submit together,
+    // MongoDB only updates the request that still sees isBooked as false.
+    const updatedExpert = await Expert.findOneAndUpdate(
+      {
+        _id: expertId,
+        availableSlots: {
+          $elemMatch: {
+            date,
+            time,
+            isBooked: false,
+          },
+        },
+      },
+      {
+        $set: { "availableSlots.$.isBooked": true },
+      },
+      { new: true }
+    );
+
+    if (!updatedExpert) {
+      return res.status(409).json({
+        success: false,
+        message: slotAlreadyBookedMessage,
+      });
+    }
+
     let booking;
 
     try {
+      // The unique index on expert + date + time is the database-level final
+      // protection against duplicate bookings.
       booking = await Booking.create({
         expert: expertId,
         expertName: expert.name,
@@ -81,6 +109,21 @@ const createBooking = async (req, res, next) => {
         notes,
       });
     } catch (error) {
+      await Expert.findOneAndUpdate(
+        {
+          _id: expertId,
+          availableSlots: {
+            $elemMatch: {
+              date,
+              time,
+            },
+          },
+        },
+        {
+          $set: { "availableSlots.$.isBooked": false },
+        }
+      );
+
       if (error.code === 11000) {
         return res.status(409).json({
           success: false,
@@ -89,28 +132,6 @@ const createBooking = async (req, res, next) => {
       }
 
       throw error;
-    }
-
-    const updatedExpert = await Expert.findOneAndUpdate(
-      {
-        _id: expertId,
-        "availableSlots.date": date,
-        "availableSlots.time": time,
-        "availableSlots.isBooked": false,
-      },
-      {
-        $set: { "availableSlots.$.isBooked": true },
-      },
-      { new: true }
-    );
-
-    if (!updatedExpert) {
-      await Booking.findByIdAndDelete(booking._id);
-
-      return res.status(409).json({
-        success: false,
-        message: slotAlreadyBookedMessage,
-      });
     }
 
     return res.status(201).json({

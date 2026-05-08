@@ -3,6 +3,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const connectDB = require("../config/db");
 const Expert = require("../models/Expert");
+const Booking = require("../models/Booking");
 
 const slotTimes = ["10:00 AM", "11:00 AM", "12:00 PM", "02:00 PM", "04:00 PM"];
 const slotDates = ["2026-05-10", "2026-05-11", "2026-05-12", "2026-05-13"];
@@ -110,6 +111,9 @@ const experts = [
 const seedExperts = async () => {
   try {
     await connectDB();
+    await Booking.deleteMany({});
+    console.log("Existing bookings deleted.");
+
     await Expert.deleteMany({});
     console.log("Existing experts deleted.");
 
