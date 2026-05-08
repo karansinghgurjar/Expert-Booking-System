@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const expertRoutes = require("./routes/expertRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 
@@ -26,6 +27,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/experts", expertRoutes);
+app.use("/bookings", bookingRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
