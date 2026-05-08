@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const expertRoutes = require("./routes/expertRoutes");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
 
@@ -23,6 +24,8 @@ app.get("/health", (req, res) => {
     message: "Backend is running",
   });
 });
+
+app.use("/experts", expertRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
