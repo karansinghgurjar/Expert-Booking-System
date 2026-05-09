@@ -134,6 +134,17 @@ const createBooking = async (req, res, next) => {
       throw error;
     }
 
+    const io = req.app.get("io");
+
+    if (io) {
+      io.to(`expert:${expertId}`).emit("slotBooked", {
+        expertId,
+        date,
+        time,
+        bookingId: booking._id,
+      });
+    }
+
     return res.status(201).json({
       success: true,
       message: "Booking created successfully.",
