@@ -14,7 +14,7 @@ function App() {
               Expert Booking
             </NavLink>
             <nav className="nav-links" aria-label="Primary navigation">
-              <NavLink className="nav-link" to="/">
+              <NavLink className="nav-link" end to="/">
                 Experts
               </NavLink>
               <NavLink className="nav-link" to="/my-bookings">
