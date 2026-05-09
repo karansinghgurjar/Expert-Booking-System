@@ -270,6 +270,103 @@ h1 {
   color: #5f6f7f;
 }
 
+.back-link {
+  width: fit-content;
+  color: #1769aa;
+  font-weight: 800;
+}
+
+.expert-detail-page {
+  gap: 22px;
+}
+
+.expert-detail-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 24px;
+  align-items: start;
+}
+
+.eyebrow {
+  margin-bottom: 8px;
+  color: #1769aa;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.detail-stats {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+
+.detail-stats div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.detail-stats dt {
+  color: #6a7a89;
+  font-weight: 700;
+}
+
+.detail-stats dd {
+  margin: 0;
+  color: #12344d;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.slots-section {
+  display: grid;
+  gap: 16px;
+}
+
+.slots-section h2,
+.slot-group h3 {
+  color: #12344d;
+}
+
+.slot-groups {
+  display: grid;
+  gap: 14px;
+}
+
+.slot-group {
+  display: grid;
+  gap: 14px;
+}
+
+.slot-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.slot-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 6px;
+  padding: 0 14px;
+  font-weight: 800;
+}
+
+.slot-button.available {
+  color: #ffffff;
+  background: #1769aa;
+}
+
+.slot-button.booked {
+  border: 1px solid #d3dce6;
+  color: #6a7a89;
+  background: #eef2f6;
+}
+
 .form-grid {
   display: grid;
   gap: 16px;
@@ -344,6 +441,15 @@ h1 {
 
   .pagination-bar span {
     min-width: 0;
+  }
+
+  .expert-detail-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .slot-list {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 }
 
