@@ -106,6 +106,13 @@ button:disabled,
   gap: 10px;
 }
 
+.page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 h1,
 h2,
 h3,
@@ -131,6 +138,136 @@ h1 {
   border-radius: 8px;
   padding: 18px;
   background: #ffffff;
+}
+
+.filters-bar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(200px, 280px);
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.filter-field {
+  display: grid;
+  gap: 6px;
+  color: #243b53;
+  font-weight: 700;
+}
+
+.filter-field input,
+.filter-field select {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #c8d3df;
+  border-radius: 6px;
+  padding: 9px 12px;
+  background: #ffffff;
+  color: #17202a;
+}
+
+.expert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.expert-card {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.expert-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.expert-card h2 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+  color: #12344d;
+}
+
+.expert-card p {
+  margin-top: 4px;
+  color: #5f6f7f;
+  font-weight: 700;
+}
+
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 32px;
+  border-radius: 999px;
+  color: #174a2a;
+  background: #dff4e7;
+  font-weight: 800;
+}
+
+.expert-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.expert-meta div {
+  display: grid;
+  gap: 2px;
+}
+
+.expert-meta dt {
+  color: #6a7a89;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.expert-meta dd {
+  margin: 0;
+  color: #17202a;
+  font-weight: 800;
+}
+
+.view-details-button {
+  width: 100%;
+}
+
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.pagination-bar span {
+  min-width: 110px;
+  color: #425466;
+  font-weight: 800;
+  text-align: center;
+}
+
+.empty-state {
+  display: grid;
+  gap: 6px;
+  border: 1px dashed #aab8c5;
+  border-radius: 8px;
+  padding: 24px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.empty-state h2 {
+  color: #12344d;
+}
+
+.empty-state p {
+  color: #5f6f7f;
 }
 
 .form-grid {
@@ -193,5 +330,25 @@ h1 {
   .nav-link {
     flex: 1;
     text-align: center;
+  }
+
+  .filters-bar,
+  .expert-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .pagination-bar span {
+    min-width: 0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+  .expert-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
