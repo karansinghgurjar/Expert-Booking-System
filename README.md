@@ -260,21 +260,27 @@ Add your demo video link here.
 
 ## GitHub Repository
 
-Add your GitHub repository link here.
+https://github.com/karansinghgurjar/Expert-Booking-System
 
 ## Deployment
 
-Add deployment link here if available.
+- Frontend: https://expert-booking-system-flax.vercel.app
+- Backend: https://expert-booking-system-crf3.onrender.com
+- Backend health check: https://expert-booking-system-crf3.onrender.com/health
+- Experts API: https://expert-booking-system-crf3.onrender.com/experts
 
 ## Final Submission Format
 
 ```text
 GitHub Repository:
-YOUR_REPO_LINK
+https://github.com/karansinghgurjar/Expert-Booking-System
 
 Demo Video:
 YOUR_VIDEO_LINK
 
 Deployment:
-YOUR_DEPLOYMENT_LINK_OR_NOT_DEPLOYED
+https://expert-booking-system-flax.vercel.app
+
+Backend:
+https://expert-booking-system-crf3.onrender.com
 ```
